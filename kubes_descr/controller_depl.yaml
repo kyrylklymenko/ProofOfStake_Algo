@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: controlserver
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: controlserver
+  template:
+    metadata: 
+      labels:
+        app: controlserver
+    spec:
+      containers:
+        - name: controlserver
+          image: "controlserver:latest"
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8001
+              name: controlserver

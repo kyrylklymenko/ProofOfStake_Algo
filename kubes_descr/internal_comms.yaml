@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: internal-comm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8001
+  selector:
+    app: controlserver
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeserver
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      name: nodeserver
+  selector:
+    app: nodeserver
